@@ -1,0 +1,1 @@
+# JAVA26-Patrik-Schlegel-Portfolio
