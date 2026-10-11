@@ -1,0 +1,347 @@
+/* === FONTREGISTER === */
+
+/* BrödFont */
+
+@font-face {
+    font-family: "CourierPrime";
+    src: url(Fonts/CourierPrime/CourierPrime-Regular.ttf) format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "CourierPrime";
+    src: url(Fonts/CourierPrime/CourierPrime-Italic.ttf) format("truetype");
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* RubrikFont */
+
+@font-face {
+    font-family: "PlayfairDisplay";
+    src: url(/Fonts/PlayfairDisplay/PlayfairDisplay-ExtraBold.ttf)
+        format("truetype");
+    font-weight: 900;
+    font-style: normal;
+}
+
+/* BoxFont */
+
+@font-face {
+    font-family: "Montsserat";
+    src: url(/Fonts/Montserrat/Montserrat-Regular.ttf) format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* === GLOBALA VARIABLAR === */
+
+:root {
+    /* INPIRERAT AV WEZ ANDERSSONS MOONRISE KINGDOM ESTETIK */
+
+    --bröd-font: "CourierPrime", monospace;
+    --rubrik-font: "PlayfairDisplay", Georgia, sans-serif;
+    --box-font: "Montsserat", sans-serif;
+
+    --box-color1: #f4a731;
+    --box-color2: #ffc81d;
+    --box-color3: #fcf8ed;
+
+    --bg-color: #9eae4c;
+
+    --text-color: #1e293b;
+
+    --padding-small: 0.5rem;
+    --padding-medium: 1rem;
+}
+
+/* === NOLLSTÄLLNING === */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* === ANVÄNDNING === */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--text-color);
+}
+
+p {
+    font-family: var(--bröd-font);
+    font-weight: 300;
+    font-size: 0.75rem;
+
+    line-height: 1.6;
+}
+
+h1 {
+    font-family: var(--rubrik-font);
+    font-weight: 900;
+    font-size: 1.7rem;
+
+    text-transform: uppercase;
+    text-shadow: 0px 2px 0px var(--box-color2);
+}
+
+h2 {
+    font-family: var(--rubrik-font);
+    font-weight: 700;
+    font-size: 1.5rem;
+
+    margin-bottom: 0.5rem;
+}
+
+/* === HEADER === */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    padding: var(--padding-small);
+
+    background-color: var(--box-color1);
+    min-height: 3rem;
+}
+
+nav ul {
+    display: flex;
+    gap: 1rem;
+}
+
+.logga-hem {
+    display: block;
+    height: 30px;
+    width: 30px;
+
+    background-color: var(--box-color2);
+    padding: 0.2rem;
+    /*  border: 1px solid var(--text-color); */
+    border-radius: 3px;
+}
+
+.navlänkar a {
+    font-family: var(--box-font);
+    font-weight: 700;
+    font-size: 0.6rem;
+
+    letter-spacing: 0.1em;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    color: var(--text-color);
+
+    background-color: var(--box-color2);
+    padding: 0.2rem;
+    /*  border: 1px solid var(--text-color); */
+    border-radius: 3px;
+}
+
+ul {
+    list-style: none;
+}
+
+/* === HEM === */
+
+#hem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: calc(100vh - 3rem);
+    padding: var(--padding-medium);
+
+    background-color: var(--bg-color);
+}
+
+.hem-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 1.5rem;
+}
+
+.namn,
+.titel {
+    z-index: 1;
+}
+
+.porträtt-img {
+    max-width: 100%;
+    max-height: 75%;
+
+    filter: drop-shadow(0 0 100px var(--box-color2));
+}
+
+/* --- border till hem ---  */
+
+.hem-container {
+    position: relative;
+    border: 2px solid var(--text-color);
+}
+
+.hem-container::before,
+.hem-container::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--text-color);
+    pointer-events: none;
+}
+
+.hem-container::before {
+    top: 6px;
+    left: 6px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.hem-container::after {
+    bottom: 6px;
+    right: 6px;
+    border-left: none;
+    border-top: none;
+}
+
+/* === OM MIG === */
+
+#om-mig {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 100vh;
+    padding: var(--padding-medium);
+
+    background-color: var(--bg-color);
+}
+
+.om-mig-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+
+    margin-top: 3rem;
+}
+
+.om-mig-bild {
+    width: 96%;
+    margin-bottom: 1rem;
+
+    background: var(--box-color2);
+
+    border: 4px double var(--text-color);
+    outline: 2px solid var(--text-color);
+    outline-offset: 4px;
+}
+
+.om-mig-bild img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* === PROJEKT === */
+
+#projekt {
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--bg-color);
+
+    min-height: 100vh;
+    padding: var(--padding-medium);
+}
+
+.projekt-boxar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    width: 100%;
+
+    justify-items: center;
+    gap: 1rem;
+}
+
+.projekt-box {
+    width: 100%;
+    height: auto;
+    text-align: center;
+
+    padding: var(--padding-small);
+
+    background-color: var(--box-color2);
+}
+
+/* === KONTAKT === */
+
+#kontakt {
+    display: flex;
+    flex-direction: column;
+
+    height: auto;
+    padding: var(--padding-small);
+
+    background-color: var(--box-color1);
+}
+
+.kontakt-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.kontakt-adresser {
+    display: flex;
+    flex-direction: column;
+}
+
+.kontakt-container p {
+    margin-bottom: 0.5rem;
+}
+
+.kontakt-ort {
+    opacity: 0.5;
+}
+
+.kontakt-icon {
+    height: 30px;
+    width: 30px;
+}
+
+.kontakt-adresser a {
+    display: flex;
+    align-items: center;
+
+    width: fit-content;
+
+    font-family: var(--box-font);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--text-color);
+
+    text-decoration: none;
+}

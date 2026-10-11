@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wes Anderson Portfolio - Boxar & Ramar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,400&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom Fonts mimicking Wes Anderson's signature typography */
+        .font-serif-title {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        .font-typewriter {
+            font-family: 'Courier Prime', monospace;
+        }
+        .font-sans-clean {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Color Palette Classes */
+        .bg-wes-green { background-color: #9eae4c; }
+        .bg-wes-ochre { background-color: #f4a731; }
+        .bg-wes-yellow { background-color: #ffc81d; }
+        .bg-wes-cream { background-color: #fcf8ed; }
+        .bg-wes-navy { background-color: #1e293b; }
+
+        .text-wes-navy { color: #1e293b; }
+        .text-wes-cream { color: #fcf8ed; }
+        .text-wes-ochre { color: #f4a731; }
+
+        .border-wes-navy { border-color: #1e293b; }
+        .border-wes-cream { border-color: #fcf8ed; }
+
+        /* Style 1: Double Border Frame */
+        .frame-double {
+            border: 4px double #1e293b;
+            outline: 2px solid #1e293b;
+            outline-offset: 4px;
+        }
+
+        /* Style 2: Vintage Corner Accents Frame */
+        .frame-vintage {
+            position: relative;
+            border: 2px solid #1e293b;
+        }
+        .frame-vintage::before,
+        .frame-vintage::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border: 2px solid #1e293b;
+            pointer-events: none;
+        }
+        .frame-vintage::before {
+            top: 6px;
+            left: 6px;
+            border-right: none;
+            border-bottom: none;
+        }
+        .frame-vintage::after {
+            bottom: 6px;
+            right: 6px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Style 3: Dashed / Dotted Stamp Frame */
+        .frame-dashed {
+            border: 3px dashed #1e293b;
+            box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Style 4: Retro Offset Drop Shadow (Brutalist / Pop Art Lite) */
+        .frame-offset-shadow {
+            border: 3px solid #1e293b;
+            box-shadow: 6px 6px 0px 0px #1e293b;
+            transition: all 0.2s ease;
+        }
+        .frame-offset-shadow:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0px 0px #1e293b;
+        }
+
+        /* Style 5: Ticket / Postcard Cutout Corners Frame */
+        .frame-postcard {
+            position: relative;
+            border: 2px solid #1e293b;
+            background-image: radial-gradient(circle at top left, transparent 12px, currentColor 12.5px),
+                              radial-gradient(circle at top right, transparent 12px, currentColor 12.5px),
+                              radial-gradient(circle at bottom left, transparent 12px, currentColor 12.5px),
+                              radial-gradient(circle at bottom right, transparent 12px, currentColor 12.5px);
+            background-position: top left, top right, bottom left, bottom right;
+            background-size: 51% 51%;
+            background-repeat: no-repeat;
+        }
+
+        /* Style 6: Inner Fine Line Frame */
+        .frame-inner-line {
+            border: 2px solid #1e293b;
+            position: relative;
+        }
+        .frame-inner-line-inset {
+            border: 1px solid #1e293b;
+            margin: 6px;
+            height: calc(100% - 12px);
+        }
+
+        /* Toast notification */
+        #toast {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-wes-green min-h-screen text-wes-navy py-12 px-4 sm:px-8 md:px-12">
+
+    <!-- Header Section (Symmetrical Wes Anderson Layout) -->
+    <header class="max-w-4xl mx-auto text-center mb-16">
+        <div class="inline-block border-y-2 border-wes-navy py-2 px-8 mb-4">
+            <span class="font-typewriter text-xs uppercase tracking-widest text-wes-navy font-bold">Kapitel I — Estetiska Element</span>
+        </div>
+        <h1 class="font-serif-title text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-wes-navy mb-3">
+            Innehållsboxar & Ramar
+        </h1>
+        <p class="font-typewriter text-sm sm:text-base text-wes-navy/90 max-w-xl mx-auto italic">
+            "Symmetri, dämpade färgpaletter och noggrant utvalda ramar för en personlig portfolio i äkta Wes Anderson-anda."
+        </p>
+        <div class="flex justify-center items-center gap-2 mt-6">
+            <span class="h-2 w-2 rounded-full bg-wes-navy"></span>
+            <span class="h-0.5 w-16 bg-wes-navy"></span>
+            <span class="h-3 w-3 rotate-45 bg-wes-navy"></span>
+            <span class="h-0.5 w-16 bg-wes-navy"></span>
+            <span class="h-2 w-2 rounded-full bg-wes-navy"></span>
+        </div>
+    </header>
+
+    <!-- Grid Showcase -->
+    <main class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+
+        <!-- BOX 1: Klassisk Dubbelram (Projekt presentation / Case Study) -->
+        <article class="flex flex-col">
+            <div class="flex-1 bg-wes-ochre frame-double p-6 flex flex-col justify-between text-wes-navy relative">
+                <div>
+                    <div class="flex justify-between items-center border-b border-wes-navy/30 pb-2 mb-4">
+                        <span class="font-typewriter text-xs uppercase tracking-wider font-bold">N° 01 • PROJEKT</span>
+                        <span class="font-typewriter text-xs">2026</span>
+                    </div>
+                    <h2 class="font-serif-title text-2xl font-bold mb-2">Grand Hotel Illustrerad</h2>
+                    <p class="font-typewriter text-xs leading-relaxed mb-4">
+                        En visuell varumärkesidentitet skapad med omsorg för historiska hotellmiljöer och klassisk typografi.
+                    </p>
+                    <div class="bg-wes-cream border border-wes-navy p-3 mb-4 text-center">
+                        <span class="font-sans-clean text-xs font-bold uppercase tracking-widest">Branding / Grafisk Design</span>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-wes-navy/30 flex justify-between items-center">
+                    <span class="font-typewriter text-xs italic">Klicka för fallstudie →</span>
+                    <span class="w-3 h-3 rounded-full bg-wes-navy inline-block"></span>
+                </div>
+            </div>
+            
+            <!-- Code Copy Toolbar -->
+            <div class="mt-3 flex justify-between items-center px-1">
+                <span class="font-typewriter text-xs font-bold">1. Dubbelram (Ockra)</span>
+                <button onclick="copyCode('code-1')" class="font-typewriter text-xs bg-wes-navy text-wes-cream px-3 py-1 rounded hover:bg-wes-navy/80 transition-colors flex items-center gap-1">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    Kopiera HTML/CSS
+                </button>
+            </div>
+        </article>
+
+        <!-- BOX 2: Vintage Retro-ram (Om Mig / Profil) -->
+        <article class="flex flex-col">
+            <div class="flex-1 bg-wes-yellow frame-vintage p-6 flex flex-col justify-between text-wes-navy">
+                <div>
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 mx-auto bg-wes-cream border-2 border-wes-navy rounded-full flex items-center justify-center font-serif-title font-bold text-2xl mb-2">
+                            WA
+                        </div>
+                        <span class="font-typewriter text-xs uppercase tracking-widest block font-bold">Porträtt av Skaparen</span>
+                    </div>
+                    <h2 class="font-serif-title text-2xl font-bold text-center mb-2">Om Mig</h2>
+                    <p class="font-typewriter text-xs leading-relaxed text-center">
+                        Baserad i Malmö. Älskar symmetri, färgkoordinering, pastelldrömmar och analog fotografering med 35mm-film.
+                    </p>
+                </div>
+                <div class="mt-6 text-center border-t border-wes-navy/20 pt-3">
+                    <span class="font-sans-clean text-xs font-bold tracking-widest uppercase bg-wes-ochre px-3 py-1 border border-wes-navy">
+                        Tillgänglig för uppdrag
+                    </span>
+                </div>
+            </div>
+
+            <!-- Code Copy Toolbar -->
+            <div class="mt-3 flex justify-between items-center px-1">
+                <span class="font-typewriter text-xs font-bold">2. Vintage Hörnram (Solgul)</span>
+                <button onclick="copyCode('code-2')" class="font-typewriter text-xs bg-wes-navy text-wes-cream px-3 py-1 rounded hover:bg-wes-navy/80 transition-colors flex items-center gap-1">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    Kopiera HTML/CSS
+                </button>
+            </div>
+        </article>
+
+        <!-- BOX 3: Streckad/Prickad Ram (Färdigheter / Skills) -->
+        <article class="flex flex-col">
+            <div class="flex-1 bg-wes-ochre frame-dashed p-6 flex flex-col justify-between text-wes-navy">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="font-typewriter text-xs uppercase tracking-wider font-bold">Inventarium</span>
+                        <span class="font-typewriter text-xs">Kat. B</span>
+                    </div>
+                    <h2 class="font-serif-title text-2xl font-bold mb-4 border-b-2 border-wes-navy pb-1">Kunnande & Verktyg</h2>
+                    <ul class="font-typewriter text-xs space-y-2">
+                        <li class="flex justify-between items-center">
+                            <span>• UI/UX Design</span>
+                            <span class="font-bold">100%</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span>• Typografi & Symmetri</span>
+                            <span class="font-bold">98%</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span>• Frontend (HTML/CSS/JS)</span>
+                            <span class="font-bold">92%</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span>• Analog Fotografering</span>
+                            <span class="font-bold">85%</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-6 pt-3 border-t border-wes-navy/30 text-center font-typewriter text-xs italic">
+                    Verifierat register
+                </div>
+            </div>
+
+            <!-- Code Copy Toolbar -->
+            <div class="mt-3 flex justify-between items-center px-1">
+                <span class="font-typewriter text-xs font-bold">3. Streckad Ram (Ockra)</span>
+                <button onclick="copyCode('code-3')" class="font-typewriter text-xs bg-wes-navy text-wes-cream px-3 py-1 rounded hover:bg-wes-navy/80 transition-colors flex items-center gap-1">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    Kopiera HTML/CSS
+                </button>
+            </div>
+        </article>
+
+        <!-- BOX 4: Offset Drop Shadow / Retro Pop-art (Citat / Filosofi) -->
+        <article class="flex flex-col">
+            <div class="flex-1 bg-wes-yellow frame-offset-shadow p-6 flex flex-col justify-between text-wes-navy">
+                <div>
+                    <div class="font-serif-title text-4xl text-center mb-1">“</div>
+                    <blockquote class="font-serif-title italic text-lg text-center font-bold mb-4">
+                        Det finns en viss skönhet i ordning, symmetri och en perfekt balanserad färgpalett.
+                    </blockquote>
+                </div>
+                <div class="text-center font-typewriter text-xs uppercase tracking-widest border-t border-wes-navy/30 pt-3">
+                    — Manifest for Estetik
+                </div>
+            </div>
+
+            <!-- Code Copy Toolbar -->
+            <div class="mt-3 flex justify-between items-center px-1">
+                <span class="font-typewriter text-xs font-bold">4. Förskjuten Skugga (Solgul)</span>
+                <button onclick="copyCode('code-4')" class="font-typewriter text-xs bg-wes-navy text-wes-cream px-3 py-1 rounded hover:bg-wes-navy/80 transition-colors flex items-center gap-1">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    Kopiera HTML/CSS
+                </button>
+            </div>
+        </article>
+
+        <!-- BOX 5: Postkort / Biljett-stil (Kontaktkort / Formulär) -->
+        <article class="flex flex-col">
+            <div class="flex-1 bg-wes-ochre border-2 border-wes-navy p-6 flex flex-col justify-between text-wes-navy relative">
+                <!-- Decorative Top Stamp -->
+                <div class="absolute top-3 right-3 bg-wes-cream border border-wes-navy px-2 py-1 rotate-3 font-typewriter text-[10px] text-center">
+                    POSTAGE<br>PAID
+                </div>
+
+                <div>
+                    <span class="font-typewriter text-xs uppercase tracking-wider font-bold block mb-1">Brevduva & Telegram</span>
+                    <h2 class="font-serif-title text-2xl font-bold mb-4">Ta Kontakt</h2>
+                    
+                    <form onsubmit="event.preventDefault();" class="space-y-3 font-typewriter text-xs">
+                        <div>
+                            <label class="block font-bold mb-1">ERNI MÄRKE / NAMN:</label>
+                            <input type="text" placeholder="A. M. Tenenbaum" class="w-full bg-wes-cream border border-wes-navy p-2 focus:outline-none focus:ring-1 focus:ring-wes-navy">
+                        </div>
+                        <div>
+                            <label class="block font-bold mb-1">E-POST:</label>
+                            <input type="email" placeholder="namn@domän.se" class="w-full bg-wes-cream border border-wes-navy p-2 focus:outline-none focus:ring-1 focus:ring-wes-navy">
+                        </div>
+                        <button type="button" class="w-full bg-wes-navy text-wes-cream font-bold py-2 mt-2 uppercase tracking-widest hover:bg-wes-navy/90 transition-colors">
+                            Sänd Telegram
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Code Copy Toolbar -->
+            <div class="mt-3 flex justify-between items-center px-1">
+                <span class="font-typewriter text-xs font-bold">5. Postkort / Frimärke (Ockra)</span>
+                <button onclick="copyCode('code-5')" class="font-typewriter text-xs bg-wes-navy text-wes-cream px-3 py-1 rounded hover:bg-wes-navy/80 transition-colors flex items-center gap-1">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    Kopiera HTML/CSS
+                </button>
+            </div>
+        </article>
+
+        <!-- BOX 6: Elegant Inre Linje (Galleri / Foto-kort) -->
+        <article class="flex flex-col">
+            <div class="flex-1 bg-wes-yellow frame-inner-line p-2 flex flex-col justify-between text-wes-navy">
+                <div class="frame-inner-line-inset p-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-typewriter text-[10px] uppercase font-bold">FIGUR 12.B</span>
+                            <span class="font-typewriter text-[10px]">35mm Film</span>
+                        </div>
+                        
+                        <!-- Mock Photo Holder -->
+                        <div class="bg-wes-cream border border-wes-navy aspect-video mb-3 flex flex-col items-center justify-center p-4 text-center">
+                            <svg class="w-8 h-8 opacity-60 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            <span class="font-typewriter text-[11px] italic">Bild / Fotografi</span>
+                        </div>
+
+                        <h2 class="font-serif-title text-xl font-bold text-center mb-1">Symmetriskt Galleri</h2>
+                        <p class="font-typewriter text-[11px] text-center leading-tight">
+                            Exempel på hur du kan visa upp dina bilder med en elegant inre ram.
+                        </p>
+                    </div>
+
+                    <div class="mt-4 pt-2 border-t border-wes-navy/30 text-center">
+                        <span class="font-typewriter text-[10px] font-bold uppercase tracking-widest">
+                            [ Klicka för att förstora ]
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Copy Toolbar -->
+            <div class="mt-3 flex justify-between items-center px-1">
+                <span class="font-typewriter text-xs font-bold">6. Inre Linjeram (Solgul)</span>
+                <button onclick="copyCode('code-6')" class="font-typewriter text-xs bg-wes-navy text-wes-cream px-3 py-1 rounded hover:bg-wes-navy/80 transition-colors flex items-center gap-1">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    Kopiera HTML/CSS
+                </button>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="max-w-4xl mx-auto text-center mt-20 pt-8 border-t-2 border-wes-navy">
+        <p class="font-serif-title font-bold text-lg text-wes-navy mb-2">
+            Wes Andersson Portfolio Kit
+        </p>
+        <p class="font-typewriter text-xs text-wes-navy/80">
+            Färgläggning: Bakgrund <span class="font-bold">#9EAE4C</span> | Box 1 <span class="font-bold">#F4A731</span> | Box 2 <span class="font-bold">#FFC81D</span>
+        </p>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-wes-navy text-wes-cream font-typewriter text-xs px-4 py-3 rounded border-2 border-wes-cream shadow-lg opacity-0 pointer-events-none transform translate-y-2">
+        Koden kopierades till urklipp! 📋
+    </div>
+
+    <!-- Hidden Code Snippets for JavaScript Copy Functionality -->
+    <template id="code-1">
+<!-- DUBBELRAM (DOUBLE BORDER) -->
+<style>
+  .frame-double {
+    border: 4px double #1e293b;
+    outline: 2px solid #1e293b;
+    outline-offset: 4px;
+    background-color: #f4a731; /* Varm ockragul */
+    color: #1e293b;
+    padding: 1.5rem;
+  }
+</style>
+
+<div class="frame-double">
+  <div style="display:flex; justify-between; border-bottom: 1px solid rgba(30,41,59,0.3); padding-bottom: 0.5rem; margin-bottom: 1rem;">
+    <span style="font-family: monospace; font-size: 0.75rem; font-weight: bold;">N° 01 • PROJEKT</span>
+    <span style="font-family: monospace; font-size: 0.75rem;">2026</span>
+  </div>
+  <h2 style="font-family: Georgia, serif; font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem;">Ditt Projekt</h2>
+  <p style="font-family: monospace; font-size: 0.875rem;">
+    Beskrivning av ditt fantastiska projekt i stilren Wes Anderson-anda.
+  </p>
+</div>
+    </template>
+
+    <template id="code-2">
+<!-- VINTAGE HÖRNRAM -->
+<style>
+  .frame-vintage {
+    position: relative;
+    border: 2px solid #1e293b;
+    background-color: #ffc81d; /* Solgul */
+    color: #1e293b;
+    padding: 1.5rem;
+  }
+  .frame-vintage::before, .frame-vintage::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #1e293b;
+    pointer-events: none;
+  }
+  .frame-vintage::before {
+    top: 6px; left: 6px;
+    border-right: none; border-bottom: none;
+  }
+  .frame-vintage::after {
+    bottom: 6px; right: 6px;
+    border-left: none; border-top: none;
+  }
+</style>
+
+<div class="frame-vintage">
+  <h2 style="font-family: Georgia, serif; font-size: 1.5rem; text-align: center;">Om Mig</h2>
+  <p style="font-family: monospace; font-size: 0.875rem; text-align: center;">
+    Skriv en kort och charmig presentation om dig själv här.
+  </p>
+</div>
+    </template>
+
+    <template id="code-3">
+<!-- STRECKAD / PRICKAD RAM -->
+<style>
+  .frame-dashed {
+    border: 3px dashed #1e293b;
+    box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.2);
+    background-color: #f4a731; /* Varm ockragul */
+    color: #1e293b;
+    padding: 1.5rem;
+  }
+</style>
+
+<div class="frame-dashed">
+  <h2 style="font-family: Georgia, serif; font-size: 1.5rem; font-weight: bold;">Färdigheter</h2>
+  <ul style="font-family: monospace; font-size: 0.875rem; list-style: none; padding: 0;">
+    <li>• UI/UX Design</li>
+    <li>• Typografi & Symmetri</li>
+  </ul>
+</div>
+    </template>
+
+    <template id="code-4">
+<!-- FÖRSKJUTEN SKUGGA (POP-ART / RETRO) -->
+<style>
+  .frame-offset-shadow {
+    border: 3px solid #1e293b;
+    box-shadow: 6px 6px 0px 0px #1e293b;
+    background-color: #ffc81d; /* Solgul */
+    color: #1e293b;
+    padding: 1.5rem;
+    transition: transform 0.2s ease;
+  }
+  .frame-offset-shadow:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px 0px #1e293b;
+  }
+</style>
+
+<div class="frame-offset-shadow">
+  <blockquote style="font-family: Georgia, serif; font-style: italic; text-align: center;">
+    "Det finns en viss skönhet i symmetri och en välvalda färger."
+  </blockquote>
+</div>
+    </template>
+
+    <template id="code-5">
+<!-- POSTKORT / FRIMÄRKE-STIL -->
+<style>
+  .frame-postcard {
+    border: 2px solid #1e293b;
+    background-color: #f4a731; /* Varm ockragul */
+    color: #1e293b;
+    padding: 1.5rem;
+    position: relative;
+  }
+  .postcard-stamp {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #fcf8ed;
+    border: 1px solid #1e293b;
+    padding: 4px 8px;
+    font-family: monospace;
+    font-size: 10px;
+  }
+</style>
+
+<div class="frame-postcard">
+  <div class="postcard-stamp">POSTAGE PAID</div>
+  <h2 style="font-family: Georgia, serif; font-size: 1.5rem;">Sänd ett Telegram</h2>
+  <p style="font-family: monospace; font-size: 0.875rem;">Kontaktformulär eller e-postadress.</p>
+</div>
+    </template>
+
+    <template id="code-6">
+<!-- INRE LINJERAM (INNER FINE LINE) -->
+<style>
+  .frame-inner-line {
+    border: 2px solid #1e293b;
+    background-color: #ffc81d; /* Solgul */
+    padding: 6px;
+  }
+  .frame-inner-line-inset {
+    border: 1px solid #1e293b;
+    padding: 1rem;
+    color: #1e293b;
+  }
+</style>
+
+<div class="frame-inner-line">
+  <div class="frame-inner-line-inset">
+    <h2 style="font-family: Georgia, serif; font-size: 1.25rem; text-align: center;">Galleri & Bilder</h2>
+    <p style="font-family: monospace; font-size: 0.75rem; text-align: center;">Inramat innehåll med inre finlinje.</p>
+  </div>
+</div>
+    </template>
+
+    <!-- JavaScript for Clipboard functionality -->
+    <script>
+        function copyCode(templateId) {
+            const template = document.getElementById(templateId);
+            if (!template) return;
+
+            const codeText = template.innerHTML.trim();
+
+            // Create temporary textarea for copying (execCommand fallback mechanism)
+            const textarea = document.createElement('textarea');
+            textarea.value = codeText;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+
+            try {
+                document.execCommand('copy');
+                showToast();
+            } catch (err) {
+                console.error('Kunde inte kopiera koden: ', err);
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
