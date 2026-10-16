@@ -151,6 +151,8 @@ nav ul {
     box-shadow: 2px 2px 0px 0px var(--text-color);
     /*  border: 1px solid var(--text-color); */
     border-radius: 3px;
+
+    transition: all 0.2s ease;
 }
 
 .navlänkar a {
@@ -174,6 +176,14 @@ nav ul {
     box-shadow: 1px 1px 0px 0px var(--text-color);
     /*  border: 1px solid var(--text-color); */
     border-radius: 3px;
+
+    transition: all 0.2s ease;
+}
+
+.navlänkar a:hover,
+.logga-hem:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 3px 3px 0px 0px #1e293b;
 }
 
 ul {
@@ -212,7 +222,7 @@ ul {
 .namn,
 .titel {
     z-index: 1;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.1rem;
 }
 
 .porträtt-img {
@@ -281,15 +291,19 @@ ul {
     gap: 0.5rem;
 }
 
+.github-portfolio {
+    color: var(--text-color);
+}
+
 .om-mig-bild {
-    width: 96%;
+    width: 100%;
     margin-top: 1rem;
 
     background: var(--box-color2);
 
     border: 4px double var(--text-color);
     outline: 2px solid var(--text-color);
-    outline-offset: 4px;
+    outline-offset: 2px;
 }
 
 .om-mig-bild img {
@@ -466,39 +480,57 @@ ul {
         background-color: var(--bg-color);
     }
 
-    .hem-container {
+    /*    .hem-container {
         display: grid;
         grid-template-columns: 1fr 1.6fr 1fr;
         align-items: center;
 
         max-width: 1200px;
         padding: var(--padding-large);
+    } */
+
+    .hem-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 2rem;
+
+        max-width: 1200px;
+        padding: var(--padding-large);
+
+        grid-template-areas:
+            "namn-yta bild-yta"
+            "titel-yta bild-yta";
     }
 
     .namn {
-        text-align: center;
-        align-self: flex-start;
-    }
-
-    .namn h1 {
-        font-size: 3rem;
-    }
-
-    .porträtt-img {
-        width: 100%;
-        max-width: 420px;
-        min-height: 560px;
-        object-fit: cover;
-        max-width: none;
-    }
-
-    .titel {
-        text-align: center;
+        grid-area: namn-yta;
+        text-align: right;
         align-self: flex-end;
     }
 
-    .titel h1 {
-        font-size: 2rem;
+    .namn h1 {
+        font-size: 2.5rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .titel {
+        grid-area: titel-yta;
+        text-align: right;
+        align-self: flex-start;
+    }
+
+    .titel h2 {
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .porträtt-img {
+        content: url("Images/ProfilbildStor-Photoroom.png");
+        grid-area: bild-yta;
+        justify-self: start;
+        max-width: 100%;
+        height: auto;
     }
 
     /* OM MIG */
@@ -509,12 +541,11 @@ ul {
 
     .om-mig-container {
         max-width: 1200px;
-        margin-top: 0;
+        margin-top: 2rem;
 
-        display: flex;
-        flex-direction: row;
-        gap: 5rem;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
     }
 
     .om-mig-text {
@@ -533,12 +564,13 @@ ul {
     }
 
     .projekt-container h2 {
-        margin-top: 0;
+        margin-top: 2rem;
     }
 
     .projekt-boxar {
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: 1fr;
+        gap: 3rem;
     }
 
     .projekt-box {
@@ -559,5 +591,18 @@ ul {
 
     #kontakt {
         padding: 2rem 10rem;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #1f2714;
+
+        --box-color1: #d98616;
+        --box-color2: #e0ac10;
+
+        --box-color3: #2d3822;
+
+        --text-color: #fcf8ed;
     }
 }
