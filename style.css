@@ -210,6 +210,7 @@ ul {
     align-items: center;
 
     text-align: center;
+    gap: 1.5rem;
 
     width: 100%;
     height: 100%;
@@ -226,7 +227,7 @@ ul {
 }
 
 .porträtt-img {
-    max-width: 100%;
+    max-width: 65%;
     max-height: 75%;
 
     filter: drop-shadow(0 0 100px var(--box-color2));
@@ -460,7 +461,7 @@ ul {
 
 /* ANPASSAR TILL DATORSKÄRM */
 
-@media (min-width: 1300px) {
+@media (min-width: 1024px) {
     /* ANVÄNDNING */
 
     h2 {
@@ -531,7 +532,7 @@ ul {
     }
 
     .porträtt-img {
-        content: url("Images/ProfilbildStor-Photoroom.png");
+        max-width: 100%;
         grid-area: bild-yta;
         justify-self: start;
         max-width: 100%;
