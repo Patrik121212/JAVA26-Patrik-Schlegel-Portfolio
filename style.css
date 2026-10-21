@@ -497,10 +497,11 @@ ul {
 
     .hem-container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         align-items: center;
         gap: 2rem;
 
+        width: 100%;
         max-width: 1200px;
         padding: var(--padding-large);
 
@@ -532,10 +533,11 @@ ul {
     }
 
     .porträtt-img {
-        max-width: 100%;
         grid-area: bild-yta;
         justify-self: start;
-        max-width: 100%;
+
+        display: block;
+        width: 100%;
         height: auto;
     }
 
