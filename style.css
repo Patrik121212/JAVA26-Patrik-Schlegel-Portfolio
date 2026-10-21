@@ -390,6 +390,11 @@ ul {
     background-color: var(--box-color3);
 }
 
+.projektlänkar-container {
+    display: flex;
+    gap: 1rem;
+}
+
 .projekt-länk {
     text-decoration: none;
     font-family: var(--bröd-font);
@@ -604,5 +609,12 @@ ul {
         --box-color3: #2d3822;
 
         --text-color: #fcf8ed;
+    }
+
+    .logga-hem {
+        box-shadow: 2px 2px 0px 0px var(--bg-color);
+    }
+    .navlänkar a {
+        box-shadow: 1px 1px 0px 0px var(--bg-color);
     }
 }
